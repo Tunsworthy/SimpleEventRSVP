@@ -1,0 +1,18 @@
+ <div class="map wpgmappity_container" id="map"></div>
+        <script>
+        function initMap() {
+        var Hotel = {lat: 1.293632, lng: 103.853592};
+        var map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 16,
+        center: Hotel
+        });
+        var marker = new google.maps.Marker({
+        position: Hotel,
+        icon : 'http://labio-wedding.s3.amazonaws.com/assets/hotel39.png',
+        map: map
+        });
+        }
+        </script>
+        <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAaAFnOj6ksETWvLdFUP5Mqc_rIOi93Kk4&callback=initMap">
+        </script>

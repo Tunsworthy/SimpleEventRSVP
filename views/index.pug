@@ -1,0 +1,22 @@
+extends layout
+
+block content
+ h1= title
+ p #{subtitle}
+ #container-fluid
+  .row
+   .col(style="width:35%")
+   .col
+    .card.card-primary(style="max-width:250px")
+     .card-header #[strong Relay Action ]
+     .card-body 
+   .col(style="width:35%")
+ #container-fluid
+   script.
+    var map;
+    function initMap() {
+      map = new google.maps.Map(document.getElementById('map'), {
+        center: { lat: 36.0907578, lng: -119.5948303 },
+        zoom: 7
+      });
+ script(async defer src=`https://maps.googleapis.com/maps/api/js?key=AIzaSyAaAFnOj6ksETWvLdFUP5Mqc_rIOi93Kk4&callback=&callback=initMap`)
