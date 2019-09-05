@@ -11,7 +11,8 @@ block content
     .col(style="-ms-flex-align: center")
       .card.card-primary(style="text-align:center")
         .card-header #[strong Details]
-        .card-body #[strong Date:] Saturday 22nd September 2019
+        .card-body 
+          .b #[strong Date:] Saturday 22nd September 2019
           .b #[strong Time:] 13:30 - 17:00
           | #[strong Location:] #[a(href="https://goo.gl/maps/DjgX1afj6JZ5nZtt5") J&A Cafe]
         iframe(type='text/html' width='600' height='450'
@@ -25,7 +26,7 @@ block content
       .card.card-primary(style="text-align:center")
         .card-header #[strong RSVP]
         .card-body
-        form(method='POST' action='/register')
+        form(method='POST' action='/rsvp')
             div.form-group
               .col
                 label(for='name') First Name:

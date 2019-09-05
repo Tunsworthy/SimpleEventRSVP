@@ -8,6 +8,10 @@ var express = require('express'),
   express = require('express');
   path = require('path');
   Router = require('./routes/allroutes');
+  flash = require('express-flash');
+  cookieParser = require('cookie-parser');
+  session = require('express-session');
+ 
 
 // mongoose instance connection url connection
 mongoose.Promise = global.Promise;
@@ -15,9 +19,20 @@ mongoose.connect('mongodb://localhost:27017/eventsdb', {useNewUrlParser: true});
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+app.use(flash());
 //var auth = require('./api/middleware/auth');
 app.set('view engine', 'pug');
 //app.use(auth);
+
+app.use(cookieParser('secret'));
+app.use(session({
+    cookie: { maxAge: 60000 },
+    saveUninitialized: true,
+    resave: 'true',
+    secret: 'secret'
+}));
+app.use(flash());
+
 Router(app); //register the route
 
 app.use('/stylesheets', express.static(__dirname + '/public/stylesheets')); // redirect bootstrap JS
