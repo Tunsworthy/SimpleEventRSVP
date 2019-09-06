@@ -1,42 +1,52 @@
 extends layout
 
 block content
- #container-fluid
-  .row
+  #container
+   row
     .col(style="text-align:center",class="header")
       h1= title
       .b #{subtitle}
-  .row 
-    .col
-    .col(style="-ms-flex-align: center")
+  #container
+   row
+    .col-lgl2
+     .col-md-auto(style="-ms-flex-align: center")
       .card.card-primary(style="text-align:center")
-        .card-header #[strong Details]
-        .card-body 
-          .b #[strong Date:] Saturday 22nd September 2019
-          .b #[strong Time:] 13:30 - 17:00
+       .card-header #[strong Details]
+       .card-body
+         p(style='white-space:pre;')
+          | #[strong Date:] Saturday 22nd September 2019
+          | #[strong Time:] 13:30 - 17:00
           | #[strong Location:] #[a(href="https://goo.gl/maps/DjgX1afj6JZ5nZtt5") J&A Cafe]
-        iframe(type='text/html' width='600' height='450'
-    src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2482.4561801975565!2d-0.10324164862964018!3d51.52319231726941!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48761b5120a02e0d%3A0xef8de8964a93d951!2sJ%20%2B%20A%20Cafe!5e0!3m2!1sen!2sli!4v1567542759752!5m2!1sen!2sli'
-    frameborder='0')
-    .col
-  #container-fluid 
-  .row
-    .col
-    .col(style="-ms-flex-align: center")
-      .card.card-primary(style="text-align:center")
-        .card-header #[strong RSVP]
-        .card-body
+         iframe(type='text/html' width='600' height='450' src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2482.4561801975565!2d-0.10324164862964018!3d51.52319231726941!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48761b5120a02e0d%3A0xef8de8964a93d951!2sJ%20%2B%20A%20Cafe!5e0!3m2!1sen!2sli!4v1567542759752!5m2!1sen!2sli' frameborder='0')
+    .col-lgl2
+  #container
+   row
+    .col-lgtl2
+     .col-md-auto
+      .card
+       .card-header(style="text-align:center") #[strong RSVP]
+       .card-body(style="padding-bottom=10px")
         form(method='POST' action='/rsvp')
-            div.form-group
-              .col
-                label(for='name') First Name:
-                input#name.form-control(type='text', placeholder='first name' name='firstname')
-              .col
-                label(for='name') Last Name:
-                input#name.form-control(type='text', placeholder='last name' name='lastname')
-              .col
-                label(for='email') Email:
-                input#email.form-control(type='email', placeholder='name@email.com' name='email')
-            button.btn.btn-primary(type='submit') RSVP
-            p 
-    .col
+         div 
+          div.input-group
+           div.input-group-prepend
+            span.input-group-text First and last name:
+           input.form-control(type='text', placeholder='first name' name='firstname')
+           |#[input.form-control(type='text', placeholder='last name' name='lastname')]
+         div
+          br 
+          div.input-group
+           div.input-group-prepend
+            span.input-group-text Email Address: 
+           input.form-control(type='text', placeholder='Email Address' name='email')
+         div
+          br 
+          div.input-group
+           div.input-group-prepend
+            span.input-group-text Mobile Number: 
+           input.form-control(type='tel' name='phone')  
+         div
+          br
+          button.btn.btn-primary(type='submit') RSVP
+       .card-footer info
+    .col-lgl2

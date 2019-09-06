@@ -2,7 +2,7 @@ var express = require('express'),
   app = express(),
   port = process.env.PORT,
   mongoose = require('mongoose'),
-  //User = require('./models/usermodel'), //created model loading here
+  Person = require('./models/personmodel'), //created model loading here
   bodyParser = require('body-parser');
   createError = require('http-errors');
   express = require('express');
@@ -11,11 +11,12 @@ var express = require('express'),
   flash = require('express-flash');
   cookieParser = require('cookie-parser');
   session = require('express-session');
+  crypto = require('crypto');
  
 
 // mongoose instance connection url connection
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://localhost:27017/eventsdb', {useNewUrlParser: true}); 
+mongoose.connect('mongodb://localhost:27017/RSVP', {useNewUrlParser: true}); 
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
