@@ -28,9 +28,16 @@ app.post('/rsvp', function(req, res) {
 	        });	
 	    };
           });
-
-
 });
 
+app.get('/rsvp', function(req,res){
+  Person.find({},function(err, person){
+    if (err)
+          res.send(err);
+      Person.countDocuments({}, function( err, count){
+        res.json(count);
+      })
+  })
 
+});
 }
