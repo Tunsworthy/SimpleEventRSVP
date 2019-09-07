@@ -12,11 +12,13 @@ var express = require('express'),
   cookieParser = require('cookie-parser');
   session = require('express-session');
   crypto = require('crypto');
- 
+  fs = require('fs');
+  mongourl = process.env.MONGODB_URI
 
 // mongoose instance connection url connection
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://localhost:27017/RSVP', {useNewUrlParser: true}); 
+mongoose.connect(mongourl, {useNewUrlParser: true}); 
+//mongoose.connect('mongodb://localhost:27017/RSVP', {useNewUrlParser: true}); 
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -47,5 +49,4 @@ app.use(function(req, res) {
 });
 
 app.listen(port);
-
 console.log('RSVP APP Started: ' + port);
