@@ -34,6 +34,10 @@ var PersonSchema = new Schema({
     type: Date,
     default: Date.now
   },
+  attending: {
+    type: Boolean,
+    default: 0
+  },
 });
 var EncryptSchema = new Schema({
   key:{

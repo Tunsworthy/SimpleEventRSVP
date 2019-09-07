@@ -11,19 +11,19 @@ block content
     .col-lgl2
      .col-md-auto(style="-ms-flex-align: center")
       .card.card-primary(style="text-align:center")
-       .card-header #[strong Greeting]
        .card-body
         div
-         p greeting
+         p= greeting
       br
       .card.card-primary(style="text-align:center")
        .card-header #[strong Details]
        .card-body
          p(style='white-space:pre;')
-          | #[strong Date:] Sunday 13th October 2019
+          | #[strong Date:] Sunday 13 October 2019
           | #[strong Time:] 14:00 - 17:00
           | #[strong Location:] #[a(href="https://goo.gl/maps/DjgX1afj6JZ5nZtt5") J&A Cafe]
-         iframe(type='text/html' width='600' height='450' src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2482.4561801975565!2d-0.10324164862964018!3d51.52319231726941!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48761b5120a02e0d%3A0xef8de8964a93d951!2sJ%20%2B%20A%20Cafe!5e0!3m2!1sen!2sli!4v1567542759752!5m2!1sen!2sli' frameborder='0')
+         div.map-responsive
+          iframe(type='text/html' width='600' height='450' src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2482.4561801975565!2d-0.10324164862964018!3d51.52319231726941!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48761b5120a02e0d%3A0xef8de8964a93d951!2sJ%20%2B%20A%20Cafe!5e0!3m2!1sen!2sli!4v1567542759752!5m2!1sen!2sli' frameborder='0')
     .col-lgl2
   #container
    row
@@ -33,9 +33,7 @@ block content
        .card-header(style="text-align:center") #[strong RSVP]
        .card-body(style="padding-bottom=10px")
         div
-          p To RSVP please enter your First and Last name. (please do on form for each guest)
-          | We would love to stay in touch once we leave the UK, to do this we would like to update our contact list feel free to enter your email address and phone number below
-        br
+          p To RSVP please enter the guest's First and Last name (one submission per guest).
         form(method='POST' action='/rsvp')
          div 
           div.input-group
@@ -44,7 +42,14 @@ block content
            input.form-control(type='text', placeholder='first name' name='firstname')
            |#[input.form-control(type='text', placeholder='last name' name='lastname')]
          div
-          br 
+           br
+           select#propertyType.select.form-control.input-lg(name='attending')
+            option(value='1', selected= true) Attending
+            option(value='0') Not Attending
+         div
+          br
+          p We would love to stay in touch, to do this we would like to update our contact list so please enter your email address and phone number below.
+         div
           div.input-group
            div.input-group-prepend
             span.input-group-text Email Address: 
@@ -54,11 +59,11 @@ block content
           div.input-group
            div.input-group-prepend
             span.input-group-text Mobile Number: 
-           input.form-control(type='tel', placeholder='000-000-0000' name='phone')  
+           input.form-control(type='tel', placeholder='0000-000-0000' name='phone')  
          div
           br
           button.btn.btn-primary(type='submit') RSVP
        .card-footer
         div
-          p Your information will be stored in an encrytped database using a RSA 2048 keyshare. Simply put, this means that only the person with the private key + passphrase can dycrpt any infomration on the website (that would be Tom).
+          p Your information will be stored in an encrytped database using a RSA 2048 keyshare. Simply put, this means that only the person with the private key + passphrase can decrypt any infomration on the website (that would be Tom).
     .col-lgl2

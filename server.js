@@ -18,14 +18,12 @@ var express = require('express'),
 // mongoose instance connection url connection
 mongoose.Promise = global.Promise;
 mongoose.connect(mongourl, {useNewUrlParser: true}); 
-//mongoose.connect('mongodb://localhost:27017/RSVP', {useNewUrlParser: true}); 
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(flash());
-//var auth = require('./api/middleware/auth');
+
 app.set('view engine', 'pug');
-//app.use(auth);
 
 app.use(cookieParser('secret'));
 app.use(session({
