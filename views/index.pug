@@ -5,15 +5,20 @@ block content
    row
     .col(style="text-align:center",class="header")
       h1= title
-      .b #{subtitle}
+      h3= subtitle
   #container
    row
     .col-lgl2
      .col-md-auto(style="-ms-flex-align: center")
       .card.card-primary(style="text-align:center")
+       .card-header #[strong Greeting]
+       .card-body
+        div
+         p greeting
+      br
+      .card.card-primary(style="text-align:center")
        .card-header #[strong Details]
        .card-body
-         p
          p(style='white-space:pre;')
           | #[strong Date:] Sunday 13th October 2019
           | #[strong Time:] 14:00 - 17:00
@@ -49,7 +54,7 @@ block content
           div.input-group
            div.input-group-prepend
             span.input-group-text Mobile Number: 
-           input.form-control(type='tel' name='phone')  
+           input.form-control(type='tel', placeholder='000-000-0000' name='phone')  
          div
           br
           button.btn.btn-primary(type='submit') RSVP

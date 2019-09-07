@@ -7,7 +7,10 @@ module.exports = function(app) {
 /* GET home page. */
 app.get('/', function(req, res, next) {
   //req.flash('info', 'This is a test notification.');
-  res.render('index', {title: 'Tom and Miao Qun\'s',subtitle:'Farewell Party',messages: req.flash('info'),error: req.flash('error')})
+  res.render('index', {title: 'Tom and Miao Qun\'s',subtitle:'Farewell Party',messages: req.flash('info'),error: req.flash('error'),
+  	greeting: 'For MQ to Update'
+
+	})
 });
 
 
