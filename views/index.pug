@@ -38,9 +38,14 @@ block content
          div 
           div.input-group
            div.input-group-prepend
-            span.input-group-text First and last name:
+            span.input-group-text First name:
            input.form-control(type='text', placeholder='first name' name='firstname')
-           |#[input.form-control(type='text', placeholder='last name' name='lastname')]
+          div 
+            br
+            div.input-group
+              div.input-group-prepend
+                span.input-group-text Last name:
+              input.form-control(type='text', placeholder='last name' name='lastname')
          div
            br
            select#propertyType.select.form-control.input-lg(name='attending')
