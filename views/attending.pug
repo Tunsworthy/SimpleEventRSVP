@@ -1,0 +1,14 @@
+extends layout
+
+block content
+  #container
+   row
+    .col-lgl2
+     .col-md-auto(style="-ms-flex-align: center")
+      .card.card-primary(style="text-align:center")
+       .card-header #[strong Attending stats]
+       .card-body
+         p(style='white-space:pre;')
+          | #[strong Attending:] #{attending}
+          | #[strong Not Attending:] #{notattending}
+    .col-lgl2

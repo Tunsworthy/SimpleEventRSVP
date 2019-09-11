@@ -33,7 +33,7 @@ var PersonSchema = new Schema({
   },
   attending: {
     type: Boolean,
-    default: 0
+    default: 1
   },
 });
 

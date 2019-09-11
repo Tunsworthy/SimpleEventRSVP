@@ -13,6 +13,7 @@ var express = require('express'),
   session = require('express-session');
   crypto = require('crypto');
   fs = require('fs');
+  async = require('async');
   mongourl = process.env.MONGODB_URI
 
 // mongoose instance connection url connection

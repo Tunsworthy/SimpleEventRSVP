@@ -3,7 +3,6 @@ var mongoose = require('mongoose'),
   Person = mongoose.model('Person')
 module.exports = function(app) {
 
-
 /* GET home page. */
 app.get('/', function(req, res, next) {
   //req.flash('info', 'This is a test notification.');
@@ -29,14 +28,53 @@ app.post('/rsvp', function(req, res) {
 });
 
 
-app.get('/rsvp', function(req,res){
-  Person.find({},function(err, person){
-    if (err)
-          res.send(err);
-      Person.countDocuments({}, function( err, count){
-        res.json(count);
-      })
-  })
+app.get('/attending', function(req,res,next){
+async.parallel([
+
+  //Read sheets data from Sheets
+  function(callback) {
+    var query = Person.countDocuments({attending: '1'});
+    query.exec(function(err, attending) {
+      if (err) {
+          callback(err);
+        }
+
+        callback(null, attending);
+      });
+  },
+
+  //Read friends data from Friends
+  function(callback) {
+    var query = Person.countDocuments({attending: '0'});
+    query.exec(function(err, notattending) {
+      if (err) {
+          callback(err);
+        }
+
+        callback(null, notattending);
+      });
+  }
+],
+
+//Compute all results
+function(err, results) {
+  if (err) {
+    console.log(err);
+    return res.send(400);
+  }
+
+  if (results == null || results[0] == null) {
+    return res.send(400);
+  }
+
+  //results contains [sheets, Friends, Expenses]
+  console.log(results);
+  var personData = {name: results[0], name: results[1]};
+  personData.attending = results[0] || [];
+  personData.notattending = results[1] || [];
+  res.render('attending', {attending: personData.attending,notattending: personData.notattending,messages: req.flash('info'),error: req.flash('error')})
 
 });
-}
+
+});
+};
